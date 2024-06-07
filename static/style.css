@@ -1,0 +1,65 @@
+/* Style the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+/* Style the header */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Style the table */
+table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the table header */
+thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style the table cells */
+td, th {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style the alternating rows */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style the user column */
+td:first-child {
+    font-weight: bold;
+}
+
+/* Style the score column */
+td:last-child {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Center the links */
+a:links {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:links:hover {
+    text-decoration: underline;
+}

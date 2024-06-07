@@ -27,16 +27,16 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(160), nullable=False)
     score = db.Column(db.Integer, nullable=False, default=0)
 
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+                           InputRequired(), Length(min=2, max=40)], render_kw={"placeholder": "FirstNameLastName"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+                             InputRequired(), Length(min=8, max=40)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Register')
 
@@ -50,10 +50,10 @@ class RegisterForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+                           InputRequired(), Length(min=2, max=40)], render_kw={"placeholder": "FirstNameLastName"})
 
     password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+                             InputRequired(), Length(min=8, max=40)], render_kw={"placeholder": "Password"})
 
     submit = SubmitField('Login')
 
@@ -98,10 +98,10 @@ def dashboard():
 
 
 @app.route('/leaderboard')
+@login_required
 def show_leaderboard():
-    #users = User.query.all()
-    leaderboard = {user.username: user.score for user in User.query.all()}
-    return render_template('leaderboard.html', leaderboard=leaderboard)
+    leaderboard = sorted(User.query.all(), key=lambda x: x.score, reverse=True)
+    return render_template('leaderboard.html', leaderboard_data=leaderboard)
 
 
 @app.route('/logout', methods=['GET', 'POST'])

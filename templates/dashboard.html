@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <h1>Welcome {{ name }}!</h1>
+    <h2>Enter your credit score</h2>
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         {{ form.score }}
         {{ form.submit }}
     </form>
+    <h3>Disclaimer: we will not share your credit score with any other users or third parties</h3>
     <a href="{{url_for('logout')}}">Press here to logout</a>
 </body>
 

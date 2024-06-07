@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Leaderboard</h1>
-    <table border="1">
-        <tr>
-            <th>Username</th>
-            <th>Credit Score</th>
-        </tr>
-        {% for name, number in leaderboard.items() %}
-        <tr>
-            <td>{{ name }}</td>
-            <td>{{ number }}</td>
-        </tr>
-        {% endfor %}
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in leaderboard_data %}
+            <tr>
+                <td>{{ item.username }}</td>
+                <td>{{ item.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    <a href="{{ url_for('home') }}">Go back</a>
+    <a href="{{url_for('logout')}}">Press here to logout</a>
 </body>
 </html>
