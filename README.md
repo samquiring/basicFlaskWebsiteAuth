@@ -21,3 +21,15 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Building and deploying docker
+First install docker https://docs.docker.com/engine/install/
+1. After making changes run the command below inside the main folder basicFlaskWebsiteAuth
+```commandline
+docker build --tag credit-score-ranker .
+```
+2. Start the docker locally with the command
+```commandline
+docker run -d -p 3000:3000 credit-score-ranker
+```
+And connect on your browser on: http://localhost:3000/
+3. 
